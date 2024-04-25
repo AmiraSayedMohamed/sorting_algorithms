@@ -1,15 +1,15 @@
 #include "sort.h"
 
 /**
- * hoare_partition - Order a subset of an array of integers according to  the 
- * Hoare partition shceme(first element as pivot)
+ * hoare_partition - Order a subset of an array of integers according to the
+ * Hoare partition scheme (first element as pivot)
  * @array: The array of integers
  * @size: the size of the array
+ * @left: The starting index of the subset to order
  * @right: The ending index of the subset to order
  *
  * Return: the final partition index
  */
-
 int hoare_partition(int *array, size_t size, int left, int right)
 {
 	int pivot, i = left - 1, j = right + 1;
@@ -19,17 +19,17 @@ int hoare_partition(int *array, size_t size, int left, int right)
 	while (1)
 	{
 		do {
-		i++;
+			i++;
 		} while (array[i] < pivot);
 
 		do {
-		j--;
+			j--;
 		} while (array[j] > pivot);
 
 		if (i >= j)
-			return j;
+			return (j);
 
-		swappint_integer(&array[i], &array[j]);
+		swap_integer(&array[i], &array[j]);
 		print_array(array, size);
 	}
 }
@@ -38,12 +38,11 @@ int hoare_partition(int *array, size_t size, int left, int right)
  * hoare_sort - Implement the quicksort algorithm through recursion
  * @array: An array of integers to sort
  * @size: The size of the array
- * @left: The starting index of the array partition  to order
- * @right: The ending index of the array  partition to order
+ * @left: The starting index of the array partition to order
+ * @right: The ending index of the array partition to order
  *
  * Description: Uses the hoare partition scheme
  */
-
 void hoare_sort(int *array, size_t size, int left, int right)
 {
 	int part;
@@ -57,15 +56,14 @@ void hoare_sort(int *array, size_t size, int left, int right)
 }
 
 /**
- * quick_sort - Sorts an array of integer in ascending order using 
- * quick sort algorithm
+ * quick_sort - Sorts an array of integers in ascending order using
+ * the quicksort algorithm
  * @array: An array of integers
  * @size: The size of the array
  *
  * Description: Uses the Hoare partition scheme, Prints
- * the array after each swap of swap of two elements
+ * the array after each swap of two elements
  */
-
 void quick_sort(int *array, size_t size)
 {
 	if (array == NULL || size < 2)
@@ -73,3 +71,4 @@ void quick_sort(int *array, size_t size)
 
 	hoare_sort(array, size, 0, size - 1);
 }
+

@@ -1,71 +1,121 @@
 #include "sort.h"
+#include <stdlib.h>
+#include <stdio.h>
 
 /**
- * cocktail_sort_list - Sorts a doubly linked list of integers in ascending
- *                      order using the Cocktail shaker sort algorithm.
- * @list: A pointer to a pointer to the head of the list.
- *
- * Description: Swaps the nodes themselves, not just the integer values.
- * Prints the list after each swap.
+ * print_left_right - Print left and right partitions.
+ * @array: Array to print.
+ * @size: Size of the array.
+ * @first: Initial position.
+ * @mid: Middle position.
  */
-void cocktail_sort_list(listint_t **list)
+void print_left_right(int *array, int size, int first, int mid)
 {
-    listint_t *start = NULL, *end = NULL;
-    int swapped = 0;
+	int k;
 
-    if (list == NULL || *list == NULL || (*list)->next == NULL)
-        return;
+	printf("Merging...\n");
+	printf("[left]: ");
+	for (k = first; k < mid; k++)
+	{
+		if (k != mid - 1)
+			printf("%d, ", array[k]);
+		else
+			printf("%d\n", array[k]);
+	}
 
-    do {
-        swapped = 0;
-        for (start = *list; start->next != end; start = start->next)
-        {
-            if (start->n > start->next->n)
-            {
-                swap_nodes(start, start->next, list);
-                swapped = 1;
-                print_list(*list);
-            }
-        }
-void swap_nodes(listint_t *node1, listint_t *node2, listint_t **list)
-        if (swapped == 0)
-            break;
-
-        swapped = 0;
-        for (end = start; end != *list; end = end->prev)
-        {
-            if (end->n < end->prev->n)
-            {
-                swap_nodes(end->prev, end, list);
-                swapped = 1;
-                print_list(*list);
-            }
-        }
-    } while (swapped);
+	printf("[right]: ");
+	for (k = mid; k < size; k++)
+	{
+		if (k < size - 1)
+			printf("%d, ", array[k]);
+		else
+			printf("%d\n", array[k]);
+	}
 }
 
 /**
- * swap_nodes - Swaps two nodes in a doubly linked list.
- * @node1: First node to swap.
- * @node2: Second node to swap.
- * @list: A pointer to a pointer to the head of the list.
+ * merge - Merge the values in the position of the array.
+ * @array: First array.
+ * @size: Size of the second array.
+ * @cpy: Copy of the array.
+ * @first: Initial position.
+ * @mid: Middle position.
+ *         First one of the second array.
  */
-void swap_nodes(listint_t *node1, listint_t *node2, listint_t **list)
+void merge(int *array, int size, int first, int mid, int *cpy)
 {
-    if (node1 == NULL || node2 == NULL || list == NULL || *list == NULL)
-        return;
+	int i = first, j = mid, k;
 
-    if (node1->prev != NULL)
-        node1->prev->next = node2;
-    else
-        *list = node2;
+	print_left_right(array, size, first, mid);
 
-    if (node2->next != NULL)
-        node2->next->prev = node1;
+	printf("[Done]: ");
+	for (k = first; k < size; k++)
+	{
+		if (i < mid && (j >= size || array[i] <= array[j]))
+			cpy[k] = array[i++];
+		else
+			cpy[k] = array[j++];
 
-    node1->next = node2->next;
-    node2->prev = node1->prev;
-    node1->prev = node2;
-    node2->next = node1;
+		if (k < size - 1)
+			printf("%d, ", cpy[k]);
+		else
+			printf("%d\n", cpy[k]);
+	}
+}
+
+/**
+ * mergeSort - Array separator.
+ * @cpy: Copy of the array.
+ * @first: Initial position.
+ * @size: Size of the original array.
+ * @array: The original array.
+ */
+void mergeSort(int *cpy, int first, int size, int *array)
+{
+	int mid;
+
+	if (size - first < 2)
+		return;
+
+	mid = (size + first) / 2;
+
+	mergeSort(array, first, mid, cpy);
+	mergeSort(array, mid, size, cpy);
+
+	merge(cpy, size, first, mid, array);
+}
+
+/**
+ * copy_array - Copy array of int.
+ * @arr: Array source.
+ * @cpy: Array destination.
+ * @size: Array size.
+ */
+void copy_array(int *arr, int *cpy, int size)
+{
+	int i;
+
+	for (i = 0; i < size; i++)
+		cpy[i] = arr[i];
+}
+
+/**
+ * merge_sort - Create partition and copy.
+ * @array: Array.
+ * @size: Array size.
+ */
+void merge_sort(int *array, size_t size)
+{
+	int *cpy;
+
+	cpy = malloc(sizeof(int) * size);
+
+	if (cpy == NULL)
+		return;
+
+	copy_array(array, cpy, size);
+
+	mergeSort(cpy, 0, size, array);
+	free(cpy);
 }
 
