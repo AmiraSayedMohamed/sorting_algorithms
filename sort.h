@@ -27,7 +27,6 @@ typedef struct listint_s
     struct listint_s *next;
 } listint_t;
 
-<<<<<<< HEAD
 
 void swapping_integer(int *m, int *l);
 
@@ -47,15 +46,19 @@ void merge_sort(int *array, size_t size);
 void heap_sort(int *array, size_t size);
 void radix_sort(int *array, size_t size);
 void bitonic_sort(int *array, size_t size);
-void quick_sort_hoare(int *array, size_t size);
 void sort_deck(deck_node_t **deck);
-=======
+
 /* Function prototypes */
 void print_array(const int *array, size_t size);
 void print_list(const listint_t *list);
 void bubble_sort(int *array, size_t size);
 void insertion_sort_list(listint_t **list);
->>>>>>> 1ba5a955df4063879168f619f9beb4632e1acf8e
+int hoare_partition(int *array, size_t size, int left, int right);
+
+/* 3-quick_sorct.c*/
+int hoare_partition(int *array, size_t size, int left, int right);
+void hoare_sort(int *array, size_t size, int left, int right);
+void quick_sort_hoare(int *array, size_t size);
 
 #endif /* SORT_H_H */
 
