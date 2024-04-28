@@ -1,5 +1,5 @@
-#ifndef SORT_H_H
-#define SORT_H_H
+#ifndef SORT_H
+#define SORT_H
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -17,7 +17,7 @@ typedef enum my_bool
 /**
  * struct listint_s - Double linked list node
  *
- * @m: this is an integer Stord in the node
+ * @m: this is an integer stored in the node
  * @previous: A Pointer to previous element of the list
  * @next: A Pointer to the next element of the list
  */
@@ -27,7 +27,6 @@ typedef struct listint_s
     struct listint_s *previous;
     struct listint_s *next;
 } listint_t;
-
 
 void swapping_integer(int *m, int *l);
 
@@ -59,5 +58,5 @@ void quick_sort_hoare(int *array, size_t size);
 /* 103-merge_sort.c */
 void merge_sort(int *array, size_t size);
 
-#endif /* SORT_H_H */
+#endif /* SORT_H */
 
