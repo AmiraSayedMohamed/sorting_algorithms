@@ -11,7 +11,7 @@ void print_list(const listint_t *list)
 
 	while (current != NULL)
 	{
-		printf("%d", current->m);
+		printf("%d", current->n);
 		if (current->next != NULL)
 			printf(", ");
 		current = current->next;
