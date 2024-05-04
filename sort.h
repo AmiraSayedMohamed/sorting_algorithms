@@ -6,10 +6,14 @@
 #include <stdio.h>
 #include <time.h>
 
-/* Custom boolean type */
+/**
+ * enum my_bool - Enumeration, of Boolean values
+ * @false: Equals 0
+ * @true: Equals 1
+ */
 typedef enum my_bool
 {
-     false = 0, true
+	false = 0, true
 } my_bool;
 
 /**
@@ -21,9 +25,9 @@ typedef enum my_bool
  */
 typedef struct listint_s
 {
-    int n;
-    struct listint_s *prev;
-    struct listint_s *next;
+	int n;
+	struct listint_s *prev;
+	struct listint_s *next;
 } listint_t;
 
 /* print_array.c*/
