@@ -37,7 +37,7 @@ void print_list(const listint_t *list);
 
 /* 2-selection_sort.c */
 void insertion_sort_list(listint_t **list);
-void swap_integers(int *a, int *b);
+ void swap_integers(int *A, int *B);
 
 /* 0-bubble_sort.c*/
 void bubble_sort(int *array, size_t size);
