@@ -26,11 +26,18 @@ typedef struct listint_s
     struct listint_s *next;
 } listint_t;
 
-/* Function prototypes */
+/* print_array.c*/
 void print_array(const int *array, size_t size);
+/* print_list.c*/
 void print_list(const listint_t *list);
+
+/* 2-selection_sort.c */
 void insertion_sort_list(listint_t **list);
+void swap_integers(int *a, int *b);
+
+/* 0-bubble_sort.c*/
 void bubble_sort(int *array, size_t size);
+
 void swap_nodes(listint_t *node1, listint_t *node2, listint_t **list);
 void cocktail_sort_list(listint_t **list);
 

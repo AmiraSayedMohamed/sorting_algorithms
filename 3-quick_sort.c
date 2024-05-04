@@ -29,7 +29,7 @@ int hoare_partition(int *array, size_t size, int left, int right)
 		if (i >= j)
 			return (j);
 
-		swap_integer(&array[i], &array[j]);
+		swap_integers(&array[i], &array[j]);
 		print_array(array, size);
 	}
 }

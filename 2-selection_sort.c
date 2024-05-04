@@ -31,3 +31,15 @@ void selection_sort(int *array, size_t size)
 	}
 }
 
+/**
+ * swap_integers - a function that swap two integers
+ * @A: the first integer to swap
+ * @B: the second integer to swap
+ */
+
+void swap_integers(int *A, int *B) {
+	*A = *A ^ *B;
+	*B = *A ^ *B;
+	*A = *A ^ *B;
+}
+
