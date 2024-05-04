@@ -53,5 +53,11 @@ void merge(int *array, int size, int first, int mid, int *cpy);
 void mergeSort(int *cpy, int first, int size, int *array);
 void copy_array(int *arr, int *cpy, int size);
 void merge_sort(int *array, size_t size);
+
+/* 3-quick_sort.c */
+int hoare_partition(int *array, size_t size, int left, int right);
+void hoare_sort(int *array, size_t size, int left, int right);
+void quick_sort(int *array, size_t size);
+
 #endif /* SORT_H */
 
