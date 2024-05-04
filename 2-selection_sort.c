@@ -7,7 +7,7 @@
  * @B: second integer to swap
  */
 
-void swap_integers(int *A, *B)
+void swap_integers(int *A, int *B)
 {
 	*A = *A ^ *B;
 	*B = *A ^ *B;
