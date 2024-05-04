@@ -1,5 +1,19 @@
 #include "sort.h"
 
+
+/**
+ * swap_integers - a function that swap 2 integers
+ * @A: first integer to swap
+ * @B: second integer to swap
+ */
+
+void swap_integers(int *A, *B)
+{
+	*A = *A ^ *B;
+	*B = *A ^ *B;
+	*A = *A ^ *B;
+}
+
 /**
  * selection_sort - Sorts an array of integers in ascending order
  *                  using the selection sort algorithm.
@@ -31,15 +45,3 @@ void selection_sort(int *array, size_t size)
 	}
 }
 
-/**
- * swap_integers - a function that swap 2 integers
- * @A: first integer to swap
- * @B: second integer to swap
- */
-
-void swap_integers(int *A, *B)
-{
-	*A = *A ^ *B;
-	*B = *A ^ *B;
-	*A = *A ^ *B;
-}
