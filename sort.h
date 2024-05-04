@@ -2,11 +2,14 @@
 #define SORT_H
 
 #include <stddef.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <time.h>
 
 /* Custom boolean type */
 typedef enum my_bool
 {
-    false = 0, true
+     false = 0, true
 } my_bool;
 
 /**
